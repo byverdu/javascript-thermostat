@@ -10,36 +10,53 @@ describe("Thermostat", function() {
       expect(thermostat.temperature).toEqual(20)
     });
 
-    // it('has a minimum temperature of 10 degrees', function() {
-      
-    // });
+    it('has a minimum temperature of 10 degrees', function() {
+      thermostat.temperature  = 10;
+      thermostat.decreaseTemp();
+      expect(thermostat.temperature).toEqual(10)
+    });
 
     it('should have a power saving mode, and be on', function() {
       expect(thermostat.savingMode).toBe(true)
     });
+
     it('could be able to be reset', function() {
       thermostat.temperature  = 25;
       expect(thermostat.setToInitial()).toEqual(20);
     });
   });
 
-//   describe('main functionality', function() {
+  describe('main functionality', function() {
     
-//     it('You can increase the temp with the up button', function() {
-//       thermostat.increaseTemp()
-//       expect(thermostat.)
-//     });
-//   });
+    it('can increase the temp with the up button', function() {
+      thermostat.increaseTemp()
+      expect(thermostat.temperature).toEqual(21)
+    });
+
+    it('can decrease the temp with the down button', function() {
+      thermostat.decreaseTemp()
+      expect(thermostat.temperature).toEqual(19)
+    });
+  });
+
+  describe('and the saving mode', function() {
+    
+    it('when is on', function() {
+      thermostat.savingMode
+      expect(thermostat.temperature).toEqual(25)
+    });
+
+  });
   
-// });
+});
 
 
 
 // Thermostat starts at 20 degrees ------------------------
 
-// You can increase the temp with the up button
+// You can increase the temp with the up button -------------------
 
-// You can decrease the temp with the down button
+// You can decrease the temp with the down button -------------------
 
 // The minimum temperature is 10 degrees
 
