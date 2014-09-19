@@ -17,18 +17,30 @@ describe("Thermostat", function() {
     });
 
     it('should have a power saving mode, and be on', function() {
-      expect(thermostat.savingMode).toBe(true)
+      expect(thermostat.savingMode).toBe(true);
     });
 
     it('could be able to be reset', function() {
-      thermostat.temperature  = 25;
+      thermostat.temperature  = 18;
       expect(thermostat.setToInitial()).toEqual(20);
+    });
+
+    it('can switch off the savingMode', function() {
+      thermostat.switchSavingMode();
+      expect(thermostat.savingMode).toBe(false)
+    });
+
+    it('can switch on the savingMode', function() {
+      thermostat.savingMode = false;
+      thermostat.switchSavingMode();
+      expect(thermostat.savingMode).toBe(true)
     });
   });
 
   describe('main functionality', function() {
     
     it('can increase the temp with the up button', function() {
+      thermostat.temperature = 20;
       thermostat.increaseTemp()
       expect(thermostat.temperature).toEqual(21)
     });
@@ -39,11 +51,23 @@ describe("Thermostat", function() {
     });
   });
 
-  describe('and the saving mode', function() {
+  describe('working with the saving mode', function() {
+
+    describe('when is set to on the', function() {
+      
+      it('maximum temperature is 25', function() {
+        thermostat.temperature  = 25;
+        thermostat.increaseTemp();
+        expect(thermostat.temperature).toEqual(25)
+      });
+    });
     
-    it('when is on', function() {
-      thermostat.savingMode
-      expect(thermostat.temperature).toEqual(25)
+
+    it('when is set to off the maximum temperature is 32', function() {
+      thermostat.savingMode   = false;
+      thermostat.temperature  = 32;
+      thermostat.increaseTemp();
+      expect(thermostat.temperature).toEqual(32)
     });
 
   });
@@ -60,7 +84,7 @@ describe("Thermostat", function() {
 
 // The minimum temperature is 10 degrees
 
-// If power saving mode is on, the maximum temperature is 25 degrees
+// If power saving mode is on, the maximum temperature is 25 degrees----------------------------
 
 // If power saving mode is off, the maximum temperature is 32 degrees
 
