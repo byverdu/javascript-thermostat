@@ -41,44 +41,6 @@ describe("Thermostat", function() {
     });
   });
 
-  describe('Main functionality', function() {
-    
-    it('can increase the temp with the up button', function() {
-      thermostat.temperature = 20;
-      thermostat.increaseTemp();
-      expect(thermostat.temperature).toEqual(21);
-    });
-
-    it('can decrease the temp with the down button', function() {
-      thermostat.decreaseTemp();
-      expect(thermostat.temperature).toEqual(19);
-    });
-  });
-
-  describe('Has a saving mode', function() {
-
-    describe('when is set to on the', function() {
-      
-      it('maximum temperature is 25', function() {
-        thermostat.temperature  = 25;
-        thermostat.increaseTemp();
-        expect(thermostat.temperature).toEqual(25)
-      });
-    });
-
-    describe('when is set to off the', function() {
-      
-      it('maximum temperature is 32', function() {
-        
-        thermostat.savingMode   = false;
-        thermostat.temperature  = 32;
-        thermostat.increaseTemp();
-        expect(thermostat.temperature).toEqual(32)
-      });
-    });
-  });
-
-
   describe('Has an energy rating:', function() {
     
     it('should be "efficient" if is less than 18 degrees', function() {
@@ -111,36 +73,120 @@ describe("Thermostat", function() {
         expect(thermostat._isCelsius).toBe(true);
       });
       
+      it('can increase the temp with the up button', function() {
+        thermostat.temperature = 20;
+        thermostat.increaseTemp();
+        expect(thermostat.temperature).toEqual(21);
+      });
+
+      it('can decrease the temp with the down button', function() {
+        thermostat.temperature = 20;
+        thermostat.decreaseTemp();
+        expect(thermostat.temperature).toEqual(19);
+
       it('Can convert to Celsius', function() {
         
-        thermostat.temperature = 10;
+        thermostat.temperature = 50;
         thermostat.toCelsius();
-        expect(thermostat.temperature).toEqual(50)
+        expect(thermostat.temperature).toEqual(10)
       });
+
+    
+  });
+
+    describe('Has a saving mode', function() {
+
+      describe('when is set to on the', function() {
+        
+        it('maximum temperature is 25', function() {
+          thermostat.temperature  = 25;
+          thermostat.increaseTemp();
+          expect(thermostat.temperature).toEqual(25)
+        });
+      });
+
+      describe('when is set to off the', function() {
+        
+        it('maximum temperature is 32', function() {
+          
+          thermostat.savingMode   = false;
+          thermostat.temperature  = 32;
+          thermostat.increaseTemp();
+          expect(thermostat.temperature).toEqual(32)
+        });
+      });
+    });
     });
 
     
     describe('Fahrenheit degrees', function() {
 
-      it('The metric changes', function() {
+      beforeEach(function(){
+        //thermostat._isCelsius = false;
+      })
+
+      it('the metric changes', function() {
         thermostat.toFahrenheit();
         expect(thermostat._isCelsius).toBe(false)
       });
+
+      it('the default temperature is 68 degrees', function() {
+        expect(thermostat.setToInitial()).toEqual(68)
+      });
+
+      it('the minimum temperature is 50 degrees', function() {
+
+        thermostat.temperature  = 50;
+        thermostat.decreaseTemp();
+        expect(thermostat.temperature).toEqual(50)
+      });
+
+      it('can increase the temp with the up button', function() {
+        thermostat.temperature = 68;
+        thermostat.increaseTemp();
+        expect(thermostat.temperature).toEqual(69);
+      });
+
+      it('can decrease the temp with the down button', function() {
+        thermostat.temperature = 68;
+        thermostat.decreaseTemp();
+        expect(thermostat.temperature).toEqual(67);
+      });
+
       
       it('Can convert to Fahrenheit', function() {
         
-        thermostat.temperature = 50;
+        thermostat.temperature = 10;
         thermostat.toFahrenheit();
-        expect(thermostat.temperature).toEqual(10);
+        expect(thermostat.temperature).toEqual(50);
       });
 
-      // it('the minimum temperature is 50 degrees', function() {
 
-      //   thermostat.temperature  = 50;
-      //   thermostat.decreaseTemp();
-      //   expect(thermostat.temperature).toEqual(50)
-      // });
+      describe('Has a saving mode', function() {
+
+        describe('when is set to on the', function() {
+          
+          it('maximum temperature is 75', function() {
+
+            thermostat.temperature  = 75;
+            thermostat.increaseTemp();
+            expect(thermostat.temperature).toEqual(76)
+          });
+        });
+
+        describe('when is set to off the', function() {
+          
+          it('maximum temperature is 90', function() {
+            
+            thermostat.savingMode   = false;
+            thermostat.temperature  = 90;
+            thermostat.increaseTemp();
+            expect(thermostat.temperature).toEqual(90)
+          });
+        });
+      });
     });
+
 
 
 

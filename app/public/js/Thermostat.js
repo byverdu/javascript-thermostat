@@ -7,7 +7,9 @@ function Thermostat(){
 
 Thermostat.prototype.setToInitial = function() {
 	
-return this.temperature = 20;
+	if (this._isCelsius) return this.temperature = 20;
+
+		else return this.temperature = 68;
 }
 
 Thermostat.prototype.switchSavingMode = function() {
@@ -15,20 +17,41 @@ Thermostat.prototype.switchSavingMode = function() {
 	this.savingMode ? (this.savingMode = false) : (this.savingMode = true)
 }
 
-Thermostat.prototype.maxTempSavingMode = function() {
+Thermostat.prototype.maxCelsiusTempSavingMode = function() {
 
 	if(this.savingMode) return 25;
-		return 32
+		else return 32
+}
+
+Thermostat.prototype.maxFahrenTempSavingMode = function() {
+
+	if(!this._isCelsius && this.savingMode) return 75;
+		else return 90
 }
 
 Thermostat.prototype.increaseTemp = function() {
+
+	if(!this._isCelsius){
+
+		if(this.temperature < this.maxFahrenTempSavingMode())  this.temperature +=1
+	}
+
+	if(this._isCelsius){
+
+		if(this.temperature < this.maxCelsiusTempSavingMode())  this.temperature +=1
+	}
 	
-	if(this.temperature < this.maxTempSavingMode())  this.temperature +=1
+
+	//if(!this._isCelsius && this.temperature < this.maxTempSavingMode())  this.temperature +=1
+	
+
 }
 
 Thermostat.prototype.decreaseTemp = function() {
 	
-	if(this.temperature > 10 ) this.temperature -=1
+	if(this._isCelsius && this.temperature > 10 ) this.temperature -=1
+
+	else if(!this._isCelsius && this.temperature > 50) this.temperature -=1
 }
 
 Thermostat.prototype.checkEnergyRating = function() {
@@ -39,11 +62,11 @@ Thermostat.prototype.checkEnergyRating = function() {
 Thermostat.prototype.toCelsius = function() {
 
 	this._isCelsius = true
-	return this.temperature = ((this.temperature -32)*5)/9
+	return this.temperature = Math.round(((this.temperature -32)*5)/9)
 }
 
 Thermostat.prototype.toFahrenheit = function() {
 
 	this._isCelsius = false
-	return this.temperature = ((this.temperature*9)/5)+32
+	return this.temperature = Math.round(((this.temperature*9)/5)+32)
 }
