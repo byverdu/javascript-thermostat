@@ -1,7 +1,8 @@
 function Thermostat(){
-	this.temperature  = 20;
-	this.savingMode   = true;
-	this.energyRating = 'average';
+	this.temperature   = 20;
+	this.savingMode    = true;
+	this.energyRating  = 'average';
+	this._isCelsius    = true
 }
 
 Thermostat.prototype.setToInitial = function() {
@@ -37,10 +38,12 @@ Thermostat.prototype.checkEnergyRating = function() {
 
 Thermostat.prototype.toCelsius = function() {
 
+	this._isCelsius = true
 	return this.temperature = ((this.temperature -32)*5)/9
 }
 
 Thermostat.prototype.toFahrenheit = function() {
 
+	this._isCelsius = false
 	return this.temperature = ((this.temperature*9)/5)+32
 }

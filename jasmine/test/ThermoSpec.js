@@ -27,23 +27,21 @@ describe("Thermostat", function() {
 
     it('can switch off the savingMode', function() {
       thermostat.switchSavingMode();
-      expect(thermostat.savingMode).toBe(false)
+      expect(thermostat.savingMode).toBe(false);
     });
 
     it('can switch on the savingMode', function() {
       thermostat.savingMode = false;
       thermostat.switchSavingMode();
-      expect(thermostat.savingMode).toBe(true)
+      expect(thermostat.savingMode).toBe(true);
     });
 
     it('has a energy rating of average', function() {
-      expect(thermostat.energyRating).toEqual('average')
+      expect(thermostat.energyRating).toEqual('average');
     });
-
-    it
   });
 
-  describe('main functionality', function() {
+  describe('Main functionality', function() {
     
     it('can increase the temp with the up button', function() {
       thermostat.temperature = 20;
@@ -53,11 +51,11 @@ describe("Thermostat", function() {
 
     it('can decrease the temp with the down button', function() {
       thermostat.decreaseTemp();
-      expect(thermostat.temperature).toEqual(19)
+      expect(thermostat.temperature).toEqual(19);
     });
   });
 
-  describe('working with the saving mode', function() {
+  describe('Has a saving mode', function() {
 
     describe('when is set to on the', function() {
       
@@ -81,7 +79,7 @@ describe("Thermostat", function() {
   });
 
 
-  describe('and energy usage:', function() {
+  describe('Has an energy rating:', function() {
     
     it('should be "efficient" if is less than 18 degrees', function() {
       
@@ -104,21 +102,52 @@ describe("Thermostat", function() {
   });
 
 });
-  describe('can display the temperature in different metrics:', function() {
+  describe('Can display the temperature in 2 metrics:', function() {
 
-    it('converts to Celsius', function() {
+    describe('Celsius degrees', function() {
+
+      it('Is the default value', function() {
+        thermostat.toCelsius();
+        expect(thermostat._isCelsius).toBe(true);
+      });
       
-      thermostat.temperature = 50;
-      thermostat.toCelsius();
-      expect(thermostat.temperature).toEqual(10)
+      it('Can convert to Celsius', function() {
+        
+        thermostat.temperature = 10;
+        thermostat.toCelsius();
+        expect(thermostat.temperature).toEqual(50)
+      });
     });
 
-    it('converts to Fahrenheit', function() {
+    
+    describe('Fahrenheit degrees', function() {
+
+      it('The metric changes', function() {
+        thermostat.toFahrenheit();
+        expect(thermostat._isCelsius).toBe(false)
+      });
       
-      thermostat.temperature = 10;
-      thermostat.toFahrenheit();
-      expect(thermostat.temperature).toEqual(50);
+      it('Can convert to Fahrenheit', function() {
+        
+        thermostat.temperature = 50;
+        thermostat.toFahrenheit();
+        expect(thermostat.temperature).toEqual(10);
+      });
+
+      // it('the minimum temperature is 50 degrees', function() {
+
+      //   thermostat.temperature  = 50;
+      //   thermostat.decreaseTemp();
+      //   expect(thermostat.temperature).toEqual(50)
+      // });
     });
+
+
+
+
+
+
+
 
   });
 

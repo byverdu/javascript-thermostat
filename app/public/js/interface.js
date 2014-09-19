@@ -10,24 +10,30 @@ jQuery(document).ready(function($) {
 
 	updateTemperature();
 
-	$('.increase').on('click', function() {
+	$('button[name=increase').on('click',     function() {
 		thermostat.increaseTemp();
 	});
 
-	$('.decrease').on('click', function() {
+	$('button[name=decrease]').on('click',     function() {
 		thermostat.decreaseTemp();
 	});
 
-	$('.celsius').on('click', function() {
+	$('button[name=celsius]').on('click',      function() {
 		thermostat.toCelsius();
 	});
 
-	$('.fahrenheit').on('click', function() {
+	$('button[name=fahrenheit]').on('click',    function() {
 		thermostat.toFahrenheit();
 	});
 
-	$('.reset_display').on('click', function() {
+	$('button[name=reset_display]').on('click', function() {
 		thermostat.setToInitial();
+	});
+
+	$('input[name=savingMode]').change(function() {
+
+		if($(this).is(":checked")) thermostat.switchSavingMode()
+			else thermostat.switchSavingMode()
 	});
 
   $('button').on('click', function(){
