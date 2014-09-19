@@ -15,7 +15,7 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-require './server'
+require './app/server'
 require 'capybara/rspec'
 
 Capybara.app = Thermostat.new
