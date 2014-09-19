@@ -35,6 +35,10 @@ describe("Thermostat", function() {
       thermostat.switchSavingMode();
       expect(thermostat.savingMode).toBe(true)
     });
+
+    it('has a energy rating of average', function() {
+      expect(thermostat.energyRating).toEqual('average')
+    });
   });
 
   describe('main functionality', function() {
@@ -61,20 +65,62 @@ describe("Thermostat", function() {
         expect(thermostat.temperature).toEqual(25)
       });
     });
-    
 
-    it('when is set to off the maximum temperature is 32', function() {
-      thermostat.savingMode   = false;
-      thermostat.temperature  = 32;
-      thermostat.increaseTemp();
-      expect(thermostat.temperature).toEqual(32)
+    describe('when is set to off the', function() {
+      
+      it('maximum temperature is 32', function() {
+        
+        thermostat.savingMode   = false;
+        thermostat.temperature  = 32;
+        thermostat.increaseTemp();
+        expect(thermostat.temperature).toEqual(32)
+      });
+    });
+  });
+
+
+  describe('and energy usage:', function() {
+    
+    it('should be "efficient" if is less than 18 degrees', function() {
+      
+      thermostat.temperature = 17;
+      thermostat.checkEnergyRating();
+      expect(thermostat.energyRating).toEqual('efficient');
+    });
+
+    it('should be "average" if is more than 18 degrees but less than 25', function() {
+      thermostat.temperature = 22;
+      thermostat.checkEnergyRating();
+      expect(thermostat.energyRating).toEqual('average');
+    });
+
+    it('should be "inefficient" if is more than 25 degrees', function() {
+      thermostat.temperature = 26;
+      thermostat.checkEnergyRating();
+      expect(thermostat.energyRating).toEqual('inefficient');
+    });
+  });
+
+});
+  describe('can display the temperature in different metrics:', function() {
+
+    it('converts to Celsius', function() {
+      
+      thermostat.temperature = 50;
+      thermostat.toCelsius();
+      expect(thermostat.temperature).toEqual(10)
+    });
+
+    it('converts to Fahrenheit', function() {
+      
+      thermostat.temperature = 10;
+      thermostat.toFahrenheit()
+      expect(thermostat.temperature).toEqual(50)
     });
 
   });
-  
-});
 
-
+// efficient -- average -- inefficient
 
 // Thermostat starts at 20 degrees ------------------------
 
@@ -82,11 +128,11 @@ describe("Thermostat", function() {
 
 // You can decrease the temp with the down button -------------------
 
-// The minimum temperature is 10 degrees
+// The minimum temperature is 10 degrees ------------------------------
 
 // If power saving mode is on, the maximum temperature is 25 degrees----------------------------
 
-// If power saving mode is off, the maximum temperature is 32 degrees
+// If power saving mode is off, the maximum temperature is 32 degrees --------------------
 
 // Power saving mode is on by default ---------------------------
 
