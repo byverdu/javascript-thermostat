@@ -40,11 +40,6 @@ Thermostat.prototype.increaseTemp = function() {
 
 		if(this.temperature < this.maxCelsiusTempSavingMode())  this.temperature +=1
 	}
-	
-
-	//if(!this._isCelsius && this.temperature < this.maxTempSavingMode())  this.temperature +=1
-	
-
 }
 
 Thermostat.prototype.decreaseTemp = function() {

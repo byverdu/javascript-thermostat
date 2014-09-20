@@ -20,10 +20,14 @@ jQuery(document).ready(function($) {
 
 	$('button[name=celsius]').on('click',      function() {
 		thermostat.toCelsius();
+		$(this).attr('disabled',true);
+		$('button[name=fahrenheit]').attr('disabled', false);
 	});
 
 	$('button[name=fahrenheit]').on('click',    function() {
 		thermostat.toFahrenheit();
+		$(this).attr('disabled',true);
+		$('button[name=celsius]').attr('disabled', false);
 	});
 
 	$('button[name=reset_display]').on('click', function() {
