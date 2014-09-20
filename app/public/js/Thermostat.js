@@ -65,13 +65,6 @@ Thermostat.prototype.energyRatingCelsius = function() {
 
 Thermostat.prototype.energyRatingFahrenheit = function() {
 
-	// if(!this._isCelsius){
-
-	// 	if(this.temperature < 64) this.energyRating = 'efficient';
-			
-	// 	if(this.temperature > 77)  this.energyRating = 'inefficient';
-	// }  is more than 18 degrees but less than 25
-
 	if(!this._isCelsius){
 
 		if(this.temperature < 64){ 
@@ -84,9 +77,29 @@ Thermostat.prototype.energyRatingFahrenheit = function() {
 
 			} else this.energyRating = 'average';
 	}
-
-
 }
+
+
+// Thermostat.prototype.energyRatingColor = function() {
+
+// 	switch(this.energyRating){
+		
+// 		case 'efficient':
+// 			$('.temperature').addClass('efficient');
+// 			break;
+
+// 		case 'average':
+// 			$('.temperature').addClass('average');
+// 			break;
+
+// 		case 'inefficient':
+// 			$('.temperature').addClass('inefficient');
+// 			break;
+// 	}
+
+// 		console.log(this.energyRating);
+// }
+
 
 Thermostat.prototype.toCelsius = function() {
 
