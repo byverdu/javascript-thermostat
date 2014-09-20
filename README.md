@@ -24,8 +24,16 @@ The functionality will be:
 
 9. The thermostat should color the display based on energy usage - < 18 is green, < 25 is yellow, otherwise red
 
-10. After every temperature change, the thermostat makes a POST request to localhost:4567/temperature_change, with the new temperature
+===
 
-==
+How to use it:
+
+1. Download or clone this repo.
+2. `cd path/folder` 
+3. Type `bundle install`
+4. and then type `rackup`
+5. Visit 127.0.0.1:9292
+
+===
 
 The technologies used in this project are: Jasmine BDD, JQuery, Sinatra, HTML5 and CSS3
