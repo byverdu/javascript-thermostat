@@ -14,26 +14,30 @@ jQuery(document).ready(function($) {
 
 	$('button[name=increase').on('click',     function() {
 		thermostat.increaseTemp();
+				thermostat.energyRatingFahrenheit();
+		//thermostat.energyRatingCelsius();
 
-		thermostat.checkEnergyRating();
 	});
 
 	$('button[name=decrease]').on('click',     function() {
 		thermostat.decreaseTemp();
+		thermostat.energyRatingFahrenheit();
+		//thermostat.energyRatingCelsius();
 
-		thermostat.checkEnergyRating();
 	});
 
 	$('button[name=celsius]').on('click',      function() {
 		thermostat.toCelsius();
 		$(this).attr('disabled',true);
 		$('button[name=fahrenheit]').attr('disabled', false);
+		//thermostat.energyRatingCelsius();
 	});
 
 	$('button[name=fahrenheit]').on('click',    function() {
 		thermostat.toFahrenheit();
 		$(this).attr('disabled',true);
 		$('button[name=celsius]').attr('disabled', false);
+		//thermostat.energyRatingFahrenheit();
 	});
 
 	$('button[name=reset_display]').on('click', function() {

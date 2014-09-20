@@ -49,7 +49,21 @@ Thermostat.prototype.decreaseTemp = function() {
 	else if(!this._isCelsius && this.temperature > 50) this.temperature -=1
 }
 
-Thermostat.prototype.checkEnergyRating = function() {
+Thermostat.prototype.energyRatingCelsius = function() {
+
+		if(this.temperature < 18){ 
+
+			this.energyRating = 'efficient';
+		
+		} else if(this.temperature > 25){ 
+
+				this.energyRating = 'inefficient';
+
+			} else this.energyRating = 'average';
+}
+
+
+Thermostat.prototype.energyRatingFahrenheit = function() {
 
 	// if(!this._isCelsius){
 
@@ -58,13 +72,13 @@ Thermostat.prototype.checkEnergyRating = function() {
 	// 	if(this.temperature > 77)  this.energyRating = 'inefficient';
 	// }  is more than 18 degrees but less than 25
 
-	if(this._isCelsius){
+	if(!this._isCelsius){
 
-		if(this.temperature < 18){ 
+		if(this.temperature < 64){ 
 
 			this.energyRating = 'efficient';
 		
-		} else if(this.temperature > 25){ 
+		} else if(this.temperature > 77){ 
 
 				this.energyRating = 'inefficient';
 

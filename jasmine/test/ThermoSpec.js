@@ -48,19 +48,19 @@ describe("Thermostat", function() {
       it('should be "efficient" if is less than 18 degrees', function() {
         
         thermostat.temperature = 17;
-        thermostat.checkEnergyRating();
+        thermostat.energyRatingCelsius();
         expect(thermostat.energyRating).toEqual('efficient');
       });
 
       it('should be "average" if is more than 18 degrees but less than 25', function() {
         thermostat.temperature = 22;
-        thermostat.checkEnergyRating();
+        thermostat.energyRatingCelsius();
         expect(thermostat.energyRating).toEqual('average');
       });
 
       it('should be "inefficient" if is more than 25 degrees', function() {
         thermostat.temperature = 26;
-        thermostat.checkEnergyRating();
+        thermostat.energyRatingCelsius();
         expect(thermostat.energyRating).toEqual('inefficient');
       });
     });
@@ -68,21 +68,22 @@ describe("Thermostat", function() {
     describe('values for Fahrenheit degrees', function() {
       
       it('should be "efficient" if is less than 64 degrees', function() {
-        
+        thermostat.toFahrenheit();
         thermostat.temperature = 63;
-        thermostat.checkEnergyRating();
+        thermostat.energyRatingFahrenheit();
         expect(thermostat.energyRating).toEqual('efficient');
       });
 
       it('should be "average" if is more than 64 degrees but less than 77', function() {
         thermostat.temperature = 72;
-        thermostat.checkEnergyRating();
+        thermostat.energyRatingFahrenheit();
         expect(thermostat.energyRating).toEqual('average');
       });
 
       it('should be "inefficient" if is more than 77 degrees', function() {
+        thermostat.toFahrenheit();
         thermostat.temperature = 79;
-        thermostat.checkEnergyRating();
+        thermostat.energyRatingFahrenheit();
         expect(thermostat.energyRating).toEqual('inefficient');
       });
     });
@@ -144,9 +145,6 @@ describe("Thermostat", function() {
     
     describe('Fahrenheit degrees', function() {
 
-      beforeEach(function(){
-        //thermostat._isCelsius = false;
-      })
 
       it('the metric changes', function() {
         thermostat.toFahrenheit();
@@ -209,14 +207,5 @@ describe("Thermostat", function() {
         });
       });
     });
-
-
-
-
-
-
-
-
-
-  });
+});
 
