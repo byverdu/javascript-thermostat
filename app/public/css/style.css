@@ -1,13 +1,74 @@
 /* CSS file */
 
-/**{
+@import url(http://fonts.googleapis.com/css?family=Orbitron:400,700);
+
+*{
 	margin:  0;
 	padding: 0;
-}*/
+}
 
+html{
 
-.efficient{ color: green; }
+	background: url(http://img.archiexpo.com/images_ae/photo-g/original-design-shelves-wall-mounted-125361-5985293.jpg) no-repeat;
+	background-size: cover;
+	font-family: 'Orbitron', sans-serif;
+}
 
-.average{ color: yellow; }
+.displayer{
+	width: 330px;
+	margin: 300px auto;
+	padding: 20px;
+	box-shadow: 1px 1px 15px;
+}
 
-.inefficient{ color: red }
+.displayer h2{
+	width: 80px;
+	height: 50px;
+	padding: 1%;
+	text-align: center;
+	font-size: 40px;
+	background-color: rgba(25,25,25,0.6);
+}
+
+.displayer h2 b{position: relative;top: 9px;}
+
+.metrics{
+	float: right;
+	position: relative;
+	top: -60px;
+	left: -20px;
+	width: 210px;
+}
+
+.metrics input{ margin-left: 10px;}
+
+.controls{
+	float: right;
+	position: relative;
+	top: -50px;
+	left: -69px;
+	width: 160px;
+}
+
+.metrics button,
+.controls button{
+	padding: 2%;
+	font-size: 15px;
+	padding: 2%;
+	font-size: 15px;
+	border-radius: 25%;
+	background: white;
+	box-shadow: 1px 1px 3px;
+	margin-left: 5px;
+}
+
+.metrics button:disabled{ background-color:  #C4FF58;  }
+
+.metrics button:focus,
+.controls button:focus {outline:0 !important;}
+
+.efficient{ color: #C4FF58; }
+
+.average{ color: #FFE60B; }
+
+.inefficient{ color: #FF7503 }

@@ -191,7 +191,7 @@ describe("Thermostat", function() {
 
             thermostat.temperature  = 75;
             thermostat.increaseTemp();
-            expect(thermostat.temperature).toEqual(76)
+            expect(thermostat.temperature).toEqual(75)
           });
         });
 

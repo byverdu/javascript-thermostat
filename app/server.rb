@@ -8,4 +8,8 @@ class Thermostat < Sinatra::Base
 	get '/' do
 		erb :index
 	end
+
+	get '/change_log' do
+		erb :change_log
+	end
 end

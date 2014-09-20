@@ -24,7 +24,6 @@ jQuery(document).ready(function($) {
 		thermostat.energyRatingFahrenheit();
 	});
 
-
 	//  Decrease temp, check for energyRating
 
 	$('button[name=decrease]').on('click',     function() {

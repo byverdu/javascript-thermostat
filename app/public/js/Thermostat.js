@@ -6,6 +6,8 @@ function Thermostat(){
 }
 
 Thermostat.prototype.setToInitial = function() {
+
+	this.energyRating  = 'average';
 	
 	if (this._isCelsius) return this.temperature = 20;
 
@@ -79,26 +81,6 @@ Thermostat.prototype.energyRatingFahrenheit = function() {
 	}
 }
 
-
-// Thermostat.prototype.energyRatingColor = function() {
-
-// 	switch(this.energyRating){
-		
-// 		case 'efficient':
-// 			$('.temperature').addClass('efficient');
-// 			break;
-
-// 		case 'average':
-// 			$('.temperature').addClass('average');
-// 			break;
-
-// 		case 'inefficient':
-// 			$('.temperature').addClass('inefficient');
-// 			break;
-// 	}
-
-// 		console.log(this.energyRating);
-// }
 
 
 Thermostat.prototype.toCelsius = function() {
