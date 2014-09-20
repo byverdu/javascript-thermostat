@@ -1,8 +1,8 @@
 function Thermostat(){
 	this.temperature   = 20;
 	this.savingMode    = true;
+	this._isCelsius    = true;
 	this.energyRating  = 'average';
-	this._isCelsius    = true
 }
 
 Thermostat.prototype.setToInitial = function() {
@@ -50,8 +50,28 @@ Thermostat.prototype.decreaseTemp = function() {
 }
 
 Thermostat.prototype.checkEnergyRating = function() {
-	if(this.temperature < 18 ) this.energyRating = 'efficient'
-	if(this.temperature > 25)  this.energyRating = 'inefficient'
+
+	// if(!this._isCelsius){
+
+	// 	if(this.temperature < 64) this.energyRating = 'efficient';
+			
+	// 	if(this.temperature > 77)  this.energyRating = 'inefficient';
+	// }  is more than 18 degrees but less than 25
+
+	if(this._isCelsius){
+
+		if(this.temperature < 18){ 
+
+			this.energyRating = 'efficient';
+		
+		} else if(this.temperature > 25){ 
+
+				this.energyRating = 'inefficient';
+
+			} else this.energyRating = 'average';
+	}
+
+
 }
 
 Thermostat.prototype.toCelsius = function() {

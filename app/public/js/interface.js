@@ -8,14 +8,20 @@ var thermostat = new Thermostat();
 
 jQuery(document).ready(function($) {
 
+	$('button[name=celsius]').attr('disabled', true);
+
 	updateTemperature();
 
 	$('button[name=increase').on('click',     function() {
 		thermostat.increaseTemp();
+
+		thermostat.checkEnergyRating();
 	});
 
 	$('button[name=decrease]').on('click',     function() {
 		thermostat.decreaseTemp();
+
+		thermostat.checkEnergyRating();
 	});
 
 	$('button[name=celsius]').on('click',      function() {

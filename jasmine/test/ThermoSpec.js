@@ -42,24 +42,49 @@ describe("Thermostat", function() {
   });
 
   describe('Has an energy rating:', function() {
-    
-    it('should be "efficient" if is less than 18 degrees', function() {
+
+    describe('values for Celsius degrees', function() {
       
-      thermostat.temperature = 17;
-      thermostat.checkEnergyRating();
-      expect(thermostat.energyRating).toEqual('efficient');
+      it('should be "efficient" if is less than 18 degrees', function() {
+        
+        thermostat.temperature = 17;
+        thermostat.checkEnergyRating();
+        expect(thermostat.energyRating).toEqual('efficient');
+      });
+
+      it('should be "average" if is more than 18 degrees but less than 25', function() {
+        thermostat.temperature = 22;
+        thermostat.checkEnergyRating();
+        expect(thermostat.energyRating).toEqual('average');
+      });
+
+      it('should be "inefficient" if is more than 25 degrees', function() {
+        thermostat.temperature = 26;
+        thermostat.checkEnergyRating();
+        expect(thermostat.energyRating).toEqual('inefficient');
+      });
     });
 
-    it('should be "average" if is more than 18 degrees but less than 25', function() {
-      thermostat.temperature = 22;
-      thermostat.checkEnergyRating();
-      expect(thermostat.energyRating).toEqual('average');
-    });
+    describe('values for Fahrenheit degrees', function() {
+      
+      it('should be "efficient" if is less than 64 degrees', function() {
+        
+        thermostat.temperature = 63;
+        thermostat.checkEnergyRating();
+        expect(thermostat.energyRating).toEqual('efficient');
+      });
 
-    it('should be "inefficient" if is more than 25 degrees', function() {
-      thermostat.temperature = 26;
-      thermostat.checkEnergyRating();
-      expect(thermostat.energyRating).toEqual('inefficient');
+      it('should be "average" if is more than 64 degrees but less than 77', function() {
+        thermostat.temperature = 72;
+        thermostat.checkEnergyRating();
+        expect(thermostat.energyRating).toEqual('average');
+      });
+
+      it('should be "inefficient" if is more than 77 degrees', function() {
+        thermostat.temperature = 79;
+        thermostat.checkEnergyRating();
+        expect(thermostat.energyRating).toEqual('inefficient');
+      });
     });
   });
 
@@ -90,9 +115,7 @@ describe("Thermostat", function() {
         thermostat.toCelsius();
         expect(thermostat.temperature).toEqual(10)
       });
-
-    
-  });
+    });
 
     describe('Has a saving mode', function() {
 
@@ -116,7 +139,7 @@ describe("Thermostat", function() {
         });
       });
     });
-    });
+  });
 
     
     describe('Fahrenheit degrees', function() {
