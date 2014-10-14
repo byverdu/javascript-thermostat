@@ -42,7 +42,26 @@ describe('Thermostat', function() {
 			expect(thermostat.savingMode).to.eq(true);
 		});
 
+		it('has a energy rating of average', function() {
+			expect(thermostat.energyRating).to.eq('')
+		});
 	});
+
+	context('Can display the temperature in 2 metrics:',function(){
+
+		context('Celsius degrees', function() {
+			
+			it('Is the default value', function() {
+				expect(thermostat._isCelsius).to.eq(true);
+			});
+
+			it('can increase the temp with the up button', function() {
+				thermostat.temperature = 20;
+				thermostat.increaseTemp();
+				expect(thermostat.temperature).to.eq(21)
+			});
+		});
+	})
 	
 
 });
