@@ -4,4 +4,12 @@ function Thermostat(){
 	this.savingMode     = true;
 }
 
+Thermostat.prototype.setDefaultValues = function() {
+	this.temperature = 20;
+}
+
+Thermostat.prototype.toggleSavingMode = function() {
+	this.savingMode ? this.savingMode = false : this.savingMode = true
+}
+
 module.exports = Thermostat;
