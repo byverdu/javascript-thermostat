@@ -78,10 +78,29 @@ describe('Thermostat', function() {
 				thermostat.savingMode = false;
 				thermostat.temperature = 32;
 				thermostat.increaseTemp();
-				expect(thermostat.temperature).to.eq(32)
+				expect(thermostat.temperature).to.eq(32);
 			});
 		});
-	})
+
+		context('Fahrenheit degrees', function(){
+
+			it('the metric changes to Fahrenheit after pressing a button', function() {
+				
+				thermostat.switchMetrics();
+				expect(thermostat._isCelsius).to.eq(false)
+
+			});
+
+			it('the metric changes to Celsius after pressing a button', function() {
+			  thermostat._isCelsius = false;
+				thermostat.switchMetrics();
+				expect(thermostat._isCelsius).to.eq(true)
+
+			});
+		})
+
+
+	});
 	
 
 });

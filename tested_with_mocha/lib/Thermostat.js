@@ -17,12 +17,14 @@ Thermostat.prototype.toggleSavingMode = function() {
 Thermostat.prototype.increaseTemp = function() {
 	if (this.savingMode && this.temperature < 25) this.temperature += 1  
 		else return 32;
-	
-	
 }
 
 Thermostat.prototype.decreaseTemp = function() {
 	this.temperature -= 1
+}
+
+Thermostat.prototype.switchMetrics = function() {
+	this._isCelsius ? this._isCelsius = false : this._isCelsius = true
 }
 
 module.exports = Thermostat;
