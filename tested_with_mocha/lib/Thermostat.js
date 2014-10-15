@@ -15,8 +15,8 @@ Thermostat.prototype.toggleSavingMode = function() {
 }
 
 Thermostat.prototype.increaseTemp = function() {
-	if (this.savingMode && this.temperature <= 25) this.temperature += 1  
-		else this.temperature = 32;
+	if (this.savingMode && this.temperature < 25) this.temperature += 1  
+		else return 32;
 	
 	
 }
