@@ -24,10 +24,11 @@ describe('Thermostat', function() {
 		});
 
 		it('could be able to be reset', function() {
-			
+			thermostat.savingMode  = false; 
 			thermostat.temperature = 25;
 			thermostat.setDefaultValues();
 			expect(thermostat.temperature).to.eq(20);
+			expect(thermostat.savingMode).to.eq(true);
 		});
 
 		it('can switch off the savingMode', function() {
@@ -58,7 +59,26 @@ describe('Thermostat', function() {
 			it('can increase the temp with the up button', function() {
 				thermostat.temperature = 20;
 				thermostat.increaseTemp();
-				expect(thermostat.temperature).to.eq(21)
+				expect(thermostat.temperature).to.eq(21);
+			});
+
+			it('can decrease the temp with the down button', function() {
+				thermostat.temperature = 22;
+				thermostat.decreaseTemp();
+				expect(thermostat.temperature).to.eq(21);
+			});
+
+			it('when savingMode is set to on the maximum temperature is 25', function() {
+				thermostat.temperature = 25;
+				thermostat.increaseTemp();
+				expect(thermostat.temperature).to.eq(25)
+			});
+
+			it('when is set to off the maximum temperature is 32', function() {
+				thermostat.savingMode = false;
+				thermostat.temperature = 32;
+				thermostat.increaseTemp();
+				expect(thermostat.temperature).to.eq(32)
 			});
 		});
 	})
