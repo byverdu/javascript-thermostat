@@ -137,9 +137,9 @@ describe('Thermostat', function() {
 			});
 
 			it('can increase the temp with the up button', function() {
-				thermostat.temperature = 50;
+				thermostat.temperature = 59;
 				thermostat.increaseTemp();
-				expect(thermostat.temperature).to.eq(51)
+				expect(thermostat.temperature).to.eq(60)
 			});
 
 			it('can decrease the temp with the down button', function() {

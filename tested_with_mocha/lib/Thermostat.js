@@ -33,28 +33,32 @@ Thermostat.prototype._setEnergyRating = function() {
 
 Thermostat.prototype.increaseTemp = function() {
 	
-	if(this._isCelsius){
+	if(this._isCelsius) this._CelsiusIncreaseTemp();
+	  else this._FahrenheitIncreaseTemp()
+}
 
-		if (this.savingMode && this.temperature < 25) this.temperature += 1  
-			else return 32;
-	}
+Thermostat.prototype._CelsiusIncreaseTemp = function() {
+	if (this.savingMode && this.temperature < 25) this.temperature += 1  
+	  else return 32;
+}
 
-	if(!this._isCelsius) this.temperature += 1
+Thermostat.prototype._FahrenheitIncreaseTemp = function() {
+	this.temperature += 1
 }
 
 Thermostat.prototype.decreaseTemp = function() {
-	if(this._isCelsius){
+	if(this._isCelsius) this._CelsiusDecreaseTemp()
+		else this._FahrenheitDecreaseTemp()
+}
 
-		if (this.temperature <= 10) this.temperature = 10;
-			else this.temperature -= 1
-	}
+Thermostat.prototype._CelsiusDecreaseTemp = function() {
+	if (this.temperature <= 10) this.temperature = 10;
+		else this.temperature -= 1
+}
 
-	if(!this._isCelsius){ 
-
-		if (this.temperature <= 50 ) this.temperature = 50 ;
-
-	  else this.temperature -= 1
-	}
+Thermostat.prototype._FahrenheitDecreaseTemp = function() {
+	if (this.temperature <= 50 ) this.temperature = 50 ;
+    else this.temperature -= 1
 }
 
 Thermostat.prototype.switchMetrics = function() {
