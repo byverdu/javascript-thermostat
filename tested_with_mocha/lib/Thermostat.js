@@ -1,5 +1,4 @@
 function Thermostat(){
-	//this.setDefaultValues();
 	this.savingMode     = true;
 	this.temperature    = 20
 	this.energyRating   = this._setEnergyRating();
@@ -43,20 +42,20 @@ Thermostat.prototype.decreaseTemp = function() {
 }
 
 Thermostat.prototype.switchMetrics = function() {
-	if(this._isCelsius) return this.toFahrenheit 
-		else return this.toCelsius 
+	if(this._isCelsius) this.temperature = this._toCelsius() 
+		else this.temperature = this._toFahrenheit() 
 }
 
-// Thermostat.prototype.toCelsius = function() {
+Thermostat.prototype._toCelsius = function() {
 
-// 	this._isCelsius = true
-// 	return this.temperature = Math.round(((this.temperature -32)*5)/9)
-// }
+	this._isCelsius = true
+	return this.temperature = Math.round(((this.temperature -32)*5)/9)
+}
 
-// Thermostat.prototype.toFahrenheit = function() {
+Thermostat.prototype._toFahrenheit = function() {
 
-// 	this._isCelsius = false
-// 	return this.temperature = Math.round(((this.temperature*9)/5)+32)
-// }
+	this._isCelsius = false
+	return this.temperature = Math.round(((this.temperature*9)/5)+32)
+}
 
 module.exports = Thermostat;
