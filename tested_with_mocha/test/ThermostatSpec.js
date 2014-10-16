@@ -12,11 +12,8 @@ describe('Thermostat', function() {
 	context('Initial settings',function(){
 
 		it('should have a default temperature of 20', function() {
+			expect(thermostat._isCelsius).to.eq(true);
 			expect(thermostat.temperature).to.eq(20);
-		});
-
-		it('has a minimum temperature of 10 degrees', function() {
-			expect(thermostat.minTemperature).to.eq(10);			
 		});
 
 		it('should have a power saving mode, and be on', function() {
@@ -68,6 +65,12 @@ describe('Thermostat', function() {
 				expect(thermostat.temperature).to.eq(21);
 			});
 
+			it('the minimum temperature is 10', function() {
+				thermostat.temperature = 10;
+				thermostat.decreaseTemp();
+				expect(thermostat.temperature).to.eq(10);
+			});
+
 			it('when savingMode is set to on the maximum temperature is 25', function() {
 				thermostat.temperature = 25;
 				thermostat.increaseTemp();
@@ -80,23 +83,46 @@ describe('Thermostat', function() {
 				thermostat.increaseTemp();
 				expect(thermostat.temperature).to.eq(32);
 			});
+
+			context("Values for the energy rating", function(){
+
+				it('should be "efficient" if is less than 18 degrees', function() {
+					
+				});
+			});
 		});
 
-		context('Fahrenheit degrees', function(){
-
-			it('the metric changes to Fahrenheit after pressing a button', function() {
-				
-				thermostat.switchMetrics();
-				expect(thermostat._isCelsius).to.eq(false)
-
-			});
+		xcontext('Fahrenheit degrees', function(){
 
 			it('the metric changes to Celsius after pressing a button', function() {
 			  thermostat._isCelsius = false;
 				thermostat.switchMetrics();
 				expect(thermostat._isCelsius).to.eq(true)
-
 			});
+
+			before(function(){
+				thermostat._isCelsius = false;
+				thermostat.switchMetrics();
+			})
+			
+			it('the metric changes to Fahrenheit after pressing a button', function() {
+				
+				//thermostat.switchMetrics();
+				expect(thermostat._isCelsius).to.eq(false)
+			});
+
+
+			it('the default temperature is 68 degrees', function() {
+				expect(thermostat.temperature).to.eq(68)
+			});
+
+			it('could be able to be reset', function() {
+			thermostat.savingMode  = false; 
+			thermostat.temperature = 72;
+			thermostat.setDefaultValues();
+			expect(thermostat.temperature).to.eq(68);
+			expect(thermostat.savingMode).to.eq(true);
+		});
 		})
 
 
