@@ -41,7 +41,8 @@ describe('Thermostat', function() {
 		});
 
 		it('has a energy rating of average', function() {
-			expect(thermostat.energyRating).to.eq('')
+			thermostat._setEnergyRating();
+			expect(thermostat.energyRating).to.eq('average')
 		});
 	});
 
@@ -86,9 +87,24 @@ describe('Thermostat', function() {
 
 			context("Values for the energy rating", function(){
 
-				it('should be "efficient" if is less than 18 degrees', function() {
-					
+				it('should be "average" if is more than 18 degrees but less than 25', function() {
+					thermostat.temperature = 24;
+					thermostat._setEnergyRating();
+					expect(thermostat.energyRating).to.equal('average');
 				});
+
+				it('should be "efficient" if is less than 18 degrees', function() {
+					thermostat.temperature = 15;
+					thermostat._setEnergyRating();
+					expect(thermostat.energyRating).to.equal('efficient');
+				});
+
+				it('should be "inefficient" if is more than 25 degrees', function() {
+					thermostat.temperature = 28;
+					thermostat._setEnergyRating();
+					expect(thermostat.energyRating).to.equal('inefficient');
+				});
+
 			});
 		});
 
