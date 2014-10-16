@@ -20,6 +20,12 @@ describe('Thermostat', function() {
 			expect(thermostat.savingMode).to.eq(true);
 		});
 
+		it('has a minimum temperature of 10 degrees', function() {
+			thermostat.temperature = 10;
+			thermostat.decreaseTemp();
+			expect(thermostat.temperature).to.eq(10);
+		});
+
 		it('could be able to be reset', function() {
 			thermostat.savingMode  = false; 
 			thermostat.temperature = 25;
@@ -116,13 +122,30 @@ describe('Thermostat', function() {
 			})
 			
 			it('the metric changes to Fahrenheit after pressing a button', function() {
-				
 				expect(thermostat._isCelsius).to.eq(false)
 			});
 
 
 			it('the default temperature is 68 degrees', function() {
 				expect(thermostat.temperature).to.eq(68)
+			});
+
+			it('the minimum temperature is 50 degrees', function() {
+				thermostat.temperature = 50;
+				thermostat.decreaseTemp();
+				expect(thermostat.temperature).to.eq(50)
+			});
+
+			it('can increase the temp with the up button', function() {
+				thermostat.temperature = 50;
+				thermostat.increaseTemp();
+				expect(thermostat.temperature).to.eq(51)
+			});
+
+			it('can decrease the temp with the down button', function() {
+				thermostat.temperature = 55;
+				thermostat.decreaseTemp();
+				expect(thermostat.temperature).to.eq(54)
 			});
 
 			it('could be able to be reset', function() {
