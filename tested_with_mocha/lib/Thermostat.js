@@ -18,6 +18,12 @@ Thermostat.prototype.toggleSavingMode = function() {
 }
 
 Thermostat.prototype._setEnergyRating = function() {
+
+	if(this._isCelsius) this._CelsiusEnergyRating();
+    else this._FahrenheitEnergyRating();	
+}
+
+Thermostat.prototype._CelsiusEnergyRating = function() {
 	if (this.temperature < 18) {
 
 		  this.energyRating = 'efficient';
@@ -28,7 +34,19 @@ Thermostat.prototype._setEnergyRating = function() {
 		 
 		
 		} else this.energyRating = 'average';
-	
+}
+
+Thermostat.prototype._FahrenheitEnergyRating = function() {
+	if (this.temperature < 64) {
+
+		  this.energyRating = 'efficient';
+
+	} else if (this.temperature > 77 ) {
+
+		 this.energyRating = 'inefficient';
+		 
+		
+		} else this.energyRating = 'average';
 }
 
 Thermostat.prototype.increaseTemp = function() {

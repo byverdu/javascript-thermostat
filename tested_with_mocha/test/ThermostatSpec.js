@@ -170,6 +170,28 @@ describe('Thermostat', function() {
 			expect(thermostat.temperature).to.eq(68);
 			expect(thermostat.savingMode).to.eq(true);
 		});
+
+		context("Values for the energy rating", function(){
+
+				it('should be "average" if is more than 64 degrees but less than 77', function() {
+					thermostat.temperature = 74;
+					thermostat._setEnergyRating();
+					expect(thermostat.energyRating).to.equal('average');
+				});
+
+				it('should be "efficient" if is less than 64 degrees', function() {
+					thermostat.temperature = 63;
+					thermostat._setEnergyRating();
+					expect(thermostat.energyRating).to.equal('efficient');
+				});
+
+				it('should be "inefficient" if is more than  degrees', function() {
+					thermostat.temperature = 78;
+					thermostat._setEnergyRating();
+					expect(thermostat.energyRating).to.equal('inefficient');
+				});
+
+			});
 		})
 
 
