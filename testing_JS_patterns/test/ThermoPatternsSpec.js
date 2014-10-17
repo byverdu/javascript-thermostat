@@ -19,7 +19,7 @@ describe('Thermostat', function() {
 			expect(Thermostat.savingMode).to.eq(true);
 		});
 
-		xit('has a minimum temperature of 10 degrees', function() {
+		it('has a minimum temperature of 10 degrees', function() {
 			Thermostat.temperature = 10;
 			Thermostat.decreaseTemp();
 			expect(Thermostat.temperature).to.eq(10);
@@ -56,39 +56,39 @@ describe('Thermostat', function() {
 		context('Celsius degrees', function() {
 			
 			it('Is the default value', function() {
-				expect(thermostat._isCelsius).to.eq(true);
+				expect(Thermostat._isCelsius).to.eq(true);
 			});
 
 			it('can increase the temp with the up button', function() {
-				thermostat.temperature = 20;
-				thermostat.increaseTemp();
-				expect(thermostat.temperature).to.eq(21);
+				Thermostat.temperature = 20;
+				Thermostat.increaseTemp();
+				expect(Thermostat.temperature).to.eq(21);
 			});
 
 			it('can decrease the temp with the down button', function() {
-				thermostat.temperature = 22;
-				thermostat.decreaseTemp();
-				expect(thermostat.temperature).to.eq(21);
+				Thermostat.temperature = 22;
+				Thermostat.decreaseTemp();
+				expect(Thermostat.temperature).to.eq(21);
 			});
 
 			it('the minimum temperature is 10', function() {
-				thermostat.temperature = 10;
-				thermostat.decreaseTemp();
-				expect(thermostat.temperature).to.eq(10);
+				Thermostat.temperature = 10;
+				Thermostat.decreaseTemp();
+				expect(Thermostat.temperature).to.eq(10);
 			});
 
 			it('when savingMode is set to on the maximum temperature is 25', function() {
-				thermostat.temperature = 24;
-				thermostat.increaseTemp();
-				expect(thermostat.temperature).to.eq(25)
+				Thermostat.temperature = 24;
+				Thermostat.increaseTemp();
+				expect(Thermostat.temperature).to.eq(25)
 			});
 
 			it('when is set to off the maximum temperature is 32', function() {
-				thermostat.savingMode = false;
-				thermostat.temperature = 31;
-				thermostat.increaseTemp();
-				thermostat.increaseTemp();
-				expect(thermostat.temperature).to.eq(32);
+				Thermostat.savingMode = false;
+				Thermostat.temperature = 31;
+				Thermostat.increaseTemp();
+				Thermostat.increaseTemp();
+				expect(Thermostat.temperature).to.eq(32);
 			});
 
 			xcontext("Values for the energy rating", function(){

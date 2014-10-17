@@ -15,11 +15,23 @@ var Thermostat = (function(){
 		this.savingMode ? this.savingMode = false : this.savingMode = true
 	}
 
+	function increaseTemp(){
+		if (this.savingMode && this.temperature < 25) this.temperature += 1  
+	  else this.temperature = 32;
+	}
+
+	function decreaseTemp(){
+		if(this.temperature <= 10 ) this.temperature = 10;
+		else this.temperature -=1
+	}
+
 	return{
 		savingMode       : this.savingMode,
 		temperature      : this.temperature,
 		setDefaultValues : setDefaultValues,
-		toggleSavingMode : toggleSavingMode
+		toggleSavingMode : toggleSavingMode,
+		increaseTemp     : increaseTemp,
+		decreaseTemp     : decreaseTemp
 	}
 })();
 
