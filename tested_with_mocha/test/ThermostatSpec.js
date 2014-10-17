@@ -79,14 +79,15 @@ describe('Thermostat', function() {
 			});
 
 			it('when savingMode is set to on the maximum temperature is 25', function() {
-				thermostat.temperature = 25;
+				thermostat.temperature = 24;
 				thermostat.increaseTemp();
 				expect(thermostat.temperature).to.eq(25)
 			});
 
 			it('when is set to off the maximum temperature is 32', function() {
 				thermostat.savingMode = false;
-				thermostat.temperature = 32;
+				thermostat.temperature = 31;
+				thermostat.increaseTemp();
 				thermostat.increaseTemp();
 				expect(thermostat.temperature).to.eq(32);
 			});
@@ -146,6 +147,20 @@ describe('Thermostat', function() {
 				thermostat.temperature = 55;
 				thermostat.decreaseTemp();
 				expect(thermostat.temperature).to.eq(54)
+			});
+
+			it('when the saving mode is set to on the maximum temperature is 75', function() {
+				thermostat.savingMode  = true;
+				thermostat.temperature = 74;
+				thermostat.increaseTemp();
+				expect(thermostat.temperature).to.eq(75)			
+			});
+
+			it('when the saving mode is set to off the maximum temperature is 90', function() {
+				thermostat.savingMode  = false;
+				thermostat.temperature = 89;
+				thermostat.increaseTemp();
+				expect(thermostat.temperature).to.eq(90);			
 			});
 
 			it('could be able to be reset', function() {

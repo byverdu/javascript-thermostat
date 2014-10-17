@@ -39,11 +39,12 @@ Thermostat.prototype.increaseTemp = function() {
 
 Thermostat.prototype._CelsiusIncreaseTemp = function() {
 	if (this.savingMode && this.temperature < 25) this.temperature += 1  
-	  else return 32;
+	  else this.temperature = 32;
 }
 
 Thermostat.prototype._FahrenheitIncreaseTemp = function() {
-	this.temperature += 1
+  if(this.savingMode && this.temperature < 75 )	this.temperature += 1;
+    else this.temperature = 90;
 }
 
 Thermostat.prototype.decreaseTemp = function() {
