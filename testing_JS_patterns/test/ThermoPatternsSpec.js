@@ -51,7 +51,7 @@ describe('Thermostat', function() {
 		});
 	});
 
-	xcontext('Can display the temperature in 2 metrics:',function(){
+	context('Can display the temperature in 2 metrics:',function(){
 
 		context('Celsius degrees', function() {
 			
@@ -91,7 +91,7 @@ describe('Thermostat', function() {
 				expect(thermostat.temperature).to.eq(32);
 			});
 
-			context("Values for the energy rating", function(){
+			xcontext("Values for the energy rating", function(){
 
 				it('should be "average" if is more than 18 degrees but less than 25', function() {
 					thermostat.temperature = 24;
@@ -114,7 +114,7 @@ describe('Thermostat', function() {
 			});
 		});
 
-		context('Fahrenheit degrees', function(){
+		xcontext('Fahrenheit degrees', function(){
 
 			beforeEach(function(){
 				thermostat._isCelsius = false;
@@ -170,7 +170,7 @@ describe('Thermostat', function() {
 			expect(thermostat.savingMode).to.eq(true);
 		});
 
-		context("Values for the energy rating", function(){
+		xcontext("Values for the energy rating", function(){
 
 				it('should be "average" if is more than 64 degrees but less than 77', function() {
 					thermostat.temperature = 74;
