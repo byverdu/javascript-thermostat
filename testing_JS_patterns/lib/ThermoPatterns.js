@@ -1,4 +1,3 @@
-
 var Thermostat = (function(){
 
    this.savingMode   = true;
@@ -7,7 +6,7 @@ var Thermostat = (function(){
    this._isCelsius   = true;
 
 	function setDefaultValues(){
-		this._isCelsius;
+		this._isCelsius  = true;
 		this.savingMode  = true;
 		this.temperature = 20;
 	}
@@ -23,3 +22,5 @@ var Thermostat = (function(){
 		toggleSavingMode : toggleSavingMode
 	}
 })();
+
+module.exports = Thermostat;
