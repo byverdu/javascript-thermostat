@@ -10,7 +10,6 @@ Thermostat.prototype.setDefaultValues = function() {
 	
 	if(!this._isCelsius)   return this.temperature = 68;
     else	return this.temperature = 20;
-	
 }
 
 Thermostat.prototype.toggleSavingMode = function() {
