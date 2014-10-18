@@ -36,14 +36,14 @@ Testing javascript using Test Development Driven with different frameworks
 ##### Mocha version
 
 1. `cd path/folder/tested_with_mocha`
-2.  npm install
-3.  mocha
+2. `npm install`
+3. `mocha`
 
 ##### JS patterns version
 
 1. `cd path/folder/testing_JS_patterns`
-2.  npm install
-3.  mocha
+2. `npm install`
+3. `mocha`
 
 ##### Jasmine version
 
