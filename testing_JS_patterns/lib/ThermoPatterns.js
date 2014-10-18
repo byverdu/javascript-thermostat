@@ -2,7 +2,6 @@ var Thermostat = (function(){
 
    this.savingMode   = true;
    this.temperature  = 20;
-   //this.energyRating = _setEnergyRating();
    this._isCelsius   = true;
 
 	function setDefaultValues(){
