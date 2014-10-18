@@ -30,9 +30,9 @@ The functionality will be:
 
 ##### Mocha version
 
-1.`cd path/folder/tested_with_mocha`
-2. npm install
-3. mocha
+1. `cd path/folder/tested_with_mocha`
+2.  npm install
+3.  mocha
 
 ##### Jasmine version
 
