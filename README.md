@@ -24,6 +24,11 @@ The functionality will be:
 
 9. The thermostat should color the display based on energy usage - < 18 is green, < 25 is yellow, otherwise red
 
+
+### Objectives
+
+Testing javascript using Test Development Driven with different frameworks
+
 ===
 
 ### How to run the test
@@ -34,6 +39,12 @@ The functionality will be:
 2.  npm install
 3.  mocha
 
+##### JS patterns version
+
+1. `cd path/folder/testing_JS_patterns`
+2.  npm install
+3.  mocha
+
 ##### Jasmine version
 
 1. `cd tested_with_jasmine/jasmine/`
@@ -41,13 +52,13 @@ The functionality will be:
 
 ### How to use it:
 
-```javascript
-1. Download or clone this repo.
+
+1. Download or clone this repo. `https://github.com/byverdu/javascript-thermostat.git`
 2. `cd path/folder/tested_with_jasmine` 
 3. Type `bundle install`
 4. and then type `rackup`
 5. Visit 127.0.0.1:9292
-```
+
 ===
 
 ### The technologies used  
