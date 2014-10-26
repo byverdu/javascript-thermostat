@@ -33,30 +33,32 @@ Testing javascript using Test Development Driven with different frameworks
 
 ### How to run the test
 
+1. `clone https://github.com/byverdu/javascript-thermostat.git`
+
 ##### Mocha version
 
-1. `cd path/folder/tested_with_mocha`
+1. `cd javascript-thermostat/tested_with_mocha`
 2. `npm install`
 3. `mocha`
 
 ##### JS patterns version
 
-1. `cd path/folder/testing_JS_patterns`
+1. `cd javascript-thermostat/testing_JS_patterns`
 2. `npm install`
 3. `mocha`
 
 ##### Jasmine version
 
-1. `cd tested_with_jasmine/jasmine/`
+1. `cd javascript-thermostat/tested_with_jasmine/jasmine/`
 2.  open file SpecRunner.html in browser
 
 ### How to use it:
 
 
-1. Download or clone this repo. `https://github.com/byverdu/javascript-thermostat.git`
-2. `cd path/folder/tested_with_jasmine` 
-3. Type `bundle install`
-4. and then type `rackup`
+1. `clone https://github.com/byverdu/javascript-thermostat.git`
+2. `cd javascript-thermostat/tested_with_jasmine` 
+3. `bundle install`
+4. `rackup`
 5. Visit 127.0.0.1:9292
 
 ===
@@ -64,8 +66,11 @@ Testing javascript using Test Development Driven with different frameworks
 ### The technologies used  
 
 1. Mocha
+1. Chai
 1. Jasmine BDD
 1. JQuery
 1. Sinatra
 1. HTML5 
 1. CSS3
+
+![demo](demo.jpg)
