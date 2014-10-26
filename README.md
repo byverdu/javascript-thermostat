@@ -73,4 +73,4 @@ Testing javascript using Test Development Driven with different frameworks
 1. HTML5 
 1. CSS3
 
-![demo](demo.jpg)
+<img src="demo.jpg" style="box-shadow: 1px 1px 1px">
