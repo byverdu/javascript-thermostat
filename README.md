@@ -24,7 +24,6 @@ The functionality will be:
 
 9. The thermostat should color the display based on energy usage - < 18 is green, < 25 is yellow, otherwise red
 
-
 ### Objectives
 
 Testing javascript using Test Development Driven with different frameworks
